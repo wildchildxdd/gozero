@@ -1,5 +1,5 @@
 type Request {
-	Albums string `path:"albums,options=id"`
+	Album string `path:"album,optional"`
 }
 
 type Response {
@@ -10,9 +10,6 @@ type Response {
 }
 
 service greet-api {
-	//	@handler GreetHandler
-	//	get /from/:name(Request) returns (Response);
 	@handler AlbumHandler
-	get /albums/:albums(Request) returns (Response);
-	
+	get /album/:album(Request) returns (Response);
 }

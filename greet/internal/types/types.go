@@ -2,7 +2,7 @@
 package types
 
 type Request struct {
-	Albums string `path:"albums,options=id"`
+	Album string `path:"album,optional"`
 }
 
 type Response struct {

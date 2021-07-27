@@ -14,7 +14,7 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/albums/:albums",
+				Path:    "/album/:album",
 				Handler: AlbumHandler(serverCtx),
 			},
 		},
