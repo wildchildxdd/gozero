@@ -2,7 +2,8 @@
 package types
 
 type Request struct {
-	Album string `path:"album,optional"`
+	Album  string `path:"album,optional"`
+	Albums string `path:"albums,optional"`
 }
 
 type Response struct {
@@ -10,4 +11,8 @@ type Response struct {
 	Title  string  `json:"title"`
 	Artist string  `json:"artist"`
 	Price  float64 `json:"price"`
+}
+
+type ResponseAlbums struct {
+	List []Response `json:"list""`
 }

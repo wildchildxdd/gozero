@@ -1,5 +1,6 @@
 type Request {
-	Album string `path:"album,optional"`
+	Album  string `path:"album,optional"`
+	Albums string `path:"albums,optional"`
 }
 
 type Response {
@@ -9,7 +10,13 @@ type Response {
 	Price  float64 `json:"price"`
 }
 
+type ResponseAlbums {
+	List []Response `json:"list""`
+}
+
 service greet-api {
 	@handler AlbumHandler
 	get /album/:album(Request) returns (Response);
+	@handler AlbumsHandler
+	get /:albums(Request) returns (Response);
 }

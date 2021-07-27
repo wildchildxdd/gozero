@@ -1,13 +1,12 @@
 package logic
 
 import (
+	"GOZero/greet/internal/svc"
+	"GOZero/greet/internal/types"
 	"context"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-
-	"GOZero/greet/internal/svc"
-	"GOZero/greet/internal/types"
 
 	"github.com/tal-tech/go-zero/core/logx"
 )
@@ -32,5 +31,11 @@ func (l *AlbumsLogic) Albums(req types.Request) (*types.ResponseAlbums, error) {
 	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	db.Find(&albums)
 	fmt.Println(albums)
-	return &types.ResponseAlbums{albums}, nil
+	var resp []types.Response
+	for i:= 0; i < len(albums); i++ {
+		album := albums[i : i+1][0:1][0]
+		fmt.Println(album)
+		resp = append(resp, types.Response{ID:album.ID, Title: album.Title, Artist: album.Artist, Price: album.Price})
+	}
+	return &types.ResponseAlbums{resp}, nil
 }
