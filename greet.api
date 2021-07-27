@@ -1,0 +1,18 @@
+type Request {
+	Albums string `path:"albums,options=id"`
+}
+
+type Response {
+	ID     string  `json:"id"`
+	Title  string  `json:"title"`
+	Artist string  `json:"artist"`
+	Price  float64 `json:"price"`
+}
+
+service greet-api {
+	//	@handler GreetHandler
+	//	get /from/:name(Request) returns (Response);
+	@handler AlbumHandler
+	get /albums/:albums(Request) returns (Response);
+	
+}
