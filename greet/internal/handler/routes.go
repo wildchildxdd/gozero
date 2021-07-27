@@ -22,6 +22,11 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/:albums",
 				Handler: AlbumsHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/album",
+				Handler: AlbumPushHandler(serverCtx),
+			},
 		},
 	)
 }

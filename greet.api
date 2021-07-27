@@ -14,9 +14,18 @@ type ResponseAlbums {
 	List []Response `json:"list""`
 }
 
+type NewAlbum {
+	ID     string  `json:"id"`
+	Title  string  `json:"title"`
+	Artist string  `json:"artist"`
+	Price  float64 `json:"price"`
+}
+
 service greet-api {
 	@handler AlbumHandler
 	get /album/:album(Request) returns (Response);
 	@handler AlbumsHandler
 	get /:albums(Request) returns (Response);
+	@handler AlbumPushHandler
+	post /album (NewAlbum) returns (Response)
 }
